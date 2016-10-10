@@ -1,0 +1,27 @@
+{
+  "name": "mks-solo",
+  "version": "1.0.0",
+  "description": "'mvp project'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliafrandall/MKS-solo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juliafrandall/MKS-solo/issues"
+  },
+  "homepage": "https://github.com/juliafrandall/MKS-solo#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "knex": "^0.12.3",
+    "sqlite3": "^3.1.6"
+  }
+}
