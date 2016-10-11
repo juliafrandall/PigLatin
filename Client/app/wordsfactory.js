@@ -3,30 +3,48 @@ angular.module('piglatin.factory', ['underscore'])
 
 .factory('Words', function(_){
 	var isVowel = function(char){
-	  var vowels = ["a", "e", "i", "o", "u"];
-	  return vowels.indexOf(char) !== -1;
+	var vowels = ["a", "e", "i", "o", "u"];
+		return vowels.indexOf(char) !== -1;
 	}
 
 	var wordInPigLatin = function(word){
-	  var vowels = ["a", "e", "i", "o", "u"];
-	  var firstLetter = word[0];
-	  if(isVowel(firstLetter)){
-	    return word + "yay";
-	  } else{
-	      for(var i = 0; i < word.length; i++) {
-	        var char = word[i];
-	        if(isVowel(char)){
-	          var wordStart = word.slice(0, i);
-	          var wordEnd = word.slice(i);
-	          return wordEnd + wordStart + "ay";
-	        }
-	         // if(isPunctuation(char)){
-	        // 	var wordStart = word.slice(0, i);
-	        // 	var wordEnd = word.slice(i + 1);
-	        // 	return wordStart + wordEnd;
-	        // }
-	      }
-	      return word + "ay";
+		var vowels = ["a", "e", "i", "o", "u"];
+		var punctuation = [".", ",", "!", "?", ":", ";", "/", "'", '"']
+		var firstLetter = word[0];
+		var translatedWord = ""
+		var vowelFound = false;
+
+		if(isVowel(firstLetter)){
+		    translatedWord = word + "yay";
+		} else {
+		    for(var i = 0; i < word.length; i++) {
+		        var char = word[i];
+		        if(isVowel(char) && vowelFound === false){
+		        	var wordStart = word.slice(0, i);
+		        	var wordEnd = word.slice(i);
+		        	translatedWord = wordEnd + wordStart + "ay";
+		        	vowelFound = true
+		        }
+			}
+		}
+
+		if(translatedWord !== ""){
+	      	_.each(translatedWord, function(char){
+	      	if (punctuation.indexOf(char) !== -1){
+	      		translatedWord = translatedWord.split(char).join("")
+	      		translatedWord = translatedWord + char;
+	      	}
+	    })
+	    	return translatedWord
+	    } else {
+		    _.each(word, function(char){
+		      	if (punctuation.indexOf(char) !== -1){
+		      		word = word.split(char).join("")
+		      		word = word + char;
+		      	}
+		      })
+		     return word + "ay";
+	     	
 	    }
 	}
 
@@ -60,7 +78,7 @@ angular.module('piglatin.factory', ['underscore'])
 	var getQuote = function(){
 		return $http({
 			method: 'GET',
-			url: 'http://api.icndb.com/jokes/random?firstName=Chuck&amp;lastName=Norris'
+			url: 'https://api.icndb.com/jokes/random?firstName=Chuck&amp;lastName=Norris'
 		}).then(function(response){
 			return response.data.value.joke;
 		});
@@ -71,43 +89,4 @@ angular.module('piglatin.factory', ['underscore'])
 });
 
 
-// var words = {
-// 	OriginalWord: word,
-// 	TranslatedWord: newWord
-// }
-
-// 	var translate = function(word){
-// 		var array = word.split('');
-// 		var vowels = ['a', 'e', 'i', 'o', 'u'];
-// 		var newWord = '';
-//     	for(var i = 0; i < vowels.length-1; i++) {
-//         	for(var y = 0; y < word.length-1; y++) {
-//             	if(word[y] === vowels[i]) {
-//                 	for(var x = y; x < word.length; x++){
-//                     	newWord = newWord + word[x];
-//                 	}
-//                 for(var n = 0; n < y; n++){ 
-//                     newWord = newWord + word[n];
-//                 }
-//                return newWord + "ay";
-//             }       
-//         }
-//     }  
-// }
-
-// 	return {
-// 		translate: translate
-// 	}
-
-//i need to return both the original and the translated word
-//I need to get the word typed in to pass to translate
-//I need to post both the word I typed in and the translated
-
-
-	// <form ng-submit="translateWord(word)" class="ng-pristine ng-valid">
-	// 		<input type='text' ng-model='word' placeholder="Enter word to translate" class="ng-pristine ng-valid ng-empty ng-touched ngc-change="change()"/>
-	// 		<button type="submit"> Translate </button>
-	// 	</form>
-	// 	<ul style="list-style:none;">
-	// 	<li ngChange="(words.TranslatedWord)in words" class="ng-binding ng-scope">{{words.OriginalWord}} </li>
-	// 	</ul>
+	
