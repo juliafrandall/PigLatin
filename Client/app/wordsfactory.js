@@ -46,6 +46,7 @@ angular.module('piglatin.factory', ['underscore'])
 		     return word + "ay";
 	     	
 	    }
+	    
 	}
 
 	var matchCapitalization = function(oldWord, newWord){
