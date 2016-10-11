@@ -1,9 +1,10 @@
 body {
-  margin: 0;
+  margin: 20;
   margin-top: 10px;
   font: normal normal bold 20px/normal "Courier New", Courier, monospace;
+  background-image: url(http://www.sonnenklang-photo.com/wp-content/uploads/revslider/parallax_scroll_slider/wood-background.jpg);
+  background-size: auto|cover|contain|initial|inherit;
 }
-
 
 h1 {
   font-style: italic;
@@ -11,6 +12,12 @@ h1 {
 
 }
 
+
+#page-wrap{
+      width: 600px;
+     margin: 0 auto;
+     margin-top: 10;
+}
 form {
   margin: 10px;
 }
