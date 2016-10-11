@@ -1,6 +1,10 @@
 {
   "name": "mks-solo",
   "version": "1.0.0",
+  "engines":{
+    "node": "6.0.0",
+    "npm": "3.8.6"
+  },
   "description": "'mvp project'",
   "main": "index.js",
   "scripts": {
