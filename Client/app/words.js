@@ -16,6 +16,7 @@ angular.module('piglatin.translator', [])
 		$scope.newWord = Words.inPigLatin($scope.word)
 		$scope.oldword = $scope.word;
 		$scope.word = "";
+		$scope.newQuote;
 		// $scope.word = "";
 		// $scope.TranslatedWords.push($scope.newWord)
 		
@@ -30,13 +31,16 @@ angular.module('piglatin.translator', [])
 		.then(function(quotes) {
 			console.log(quotes)
 			$scope.data.quotes = quotes;
+			$scope.newQuote = '';
 		}).catch(function(error) {
 			console.error(error);
 		});
 	};
 
+
 	$scope.getQuotePigLatin = function(){
-		$scope.newQuote = Words.inPigLatin($scope.data.quotes)
+		$scope.newQuote= Words.inPigLatin($scope.data.quotes)
+
 
 	}
 })

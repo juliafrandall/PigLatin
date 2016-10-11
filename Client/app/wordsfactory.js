@@ -2,7 +2,6 @@ angular.module('piglatin.factory', ['underscore'])
 
 
 .factory('Words', function(_){
-
 	var isVowel = function(char){
 	  var vowels = ["a", "e", "i", "o", "u"];
 	  return vowels.indexOf(char) !== -1;
@@ -21,6 +20,11 @@ angular.module('piglatin.factory', ['underscore'])
 	          var wordEnd = word.slice(i);
 	          return wordEnd + wordStart + "ay";
 	        }
+	         // if(isPunctuation(char)){
+	        // 	var wordStart = word.slice(0, i);
+	        // 	var wordEnd = word.slice(i + 1);
+	        // 	return wordStart + wordEnd;
+	        // }
 	      }
 	      return word + "ay";
 	    }
@@ -56,9 +60,9 @@ angular.module('piglatin.factory', ['underscore'])
 	var getQuote = function(){
 		return $http({
 			method: 'GET',
-			url: 'http://quotes.rest/qod.json'
+			url: 'http://api.icndb.com/jokes/random?firstName=Chuck&amp;lastName=Norris'
 		}).then(function(response){
-			return response.data.contents.quotes[0].quote;
+			return response.data.value.joke;
 		});
 	};
 	return{
