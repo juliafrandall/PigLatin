@@ -16,11 +16,11 @@
 	<body ng-app='piglatin'>
 	<div ng-controller="TranslatorController">
 	<h1>Pig Latin Translator</h1>
-		<form ng-submit="translateWord()">
+		<form ng-submit="translateWord()" class="ng-pristine">
 			<input type='text' ng-model='word' placeholder="Enter word to translate" />
 	 		<button type="submit" value="Submit"> Translate </button>
 			<p>
-			<tt>Original Word: {{word}}</tt><br/>
+			<tt>Original Word: {{oldword}}</tt><br/>
 			<tt>Translated Word: {{newWord}}</tt><br/>
 			</p>
 		</form>
