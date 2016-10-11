@@ -35,9 +35,11 @@ angular.module('piglatin.translator', [])
 		});
 	};
 
+	$scope.getQuotePigLatin = function(){
+		$scope.newQuote = Words.inPigLatin($scope.data.quotes)
+
+	}
 })
 
-.controller('QuoteController', function($scope, Quotes){
 
-})
 
