@@ -9,18 +9,24 @@
 	<script src="app/words.js"></script>
 	<script src="app/app.js"></script>
 	<script src="app/wordsfactory.js"></script>
-
+	<script src="bower_components/underscore/underscore.js"></script>
+	<script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
 
 	</head>
 	<body ng-app='piglatin'>
+	<div ng-controller="TranslatorController">
 	<h1>Pig Latin Translator</h1>
-		<form ng-submit="translateWord()" ng-controller="TranslatorController">
+		<form ng-submit="translateWord()">
 			<input type='text' ng-model='word' placeholder="Enter word to translate" />
 	 		<button type="submit" value="Submit"> Translate </button>
 			<p>
-			<tt>Original Word = {{word}}</tt><br/>
-			<tt>Translated Word = {{newWord}}</tt><br/>
+			<tt>Original Word: {{word}}</tt><br/>
+			<tt>Translated Word: {{newWord}}</tt><br/>
 			</p>
 		</form>
-	</body>
+
+	<h2> Quotes </h2>
+	<button ng-click= "getQuotes()"> Get Quote </button>
+	<p>{{data.quotes}}</p>
+	</div>
 </html>

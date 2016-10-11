@@ -1,0 +1,17 @@
+{
+  "name": "mks-solo",
+  "description": "'mvp project'",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "https://github.com/juliafrandall/MKS-solo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-underscore-module": "^1.0.3"
+  }
+}
