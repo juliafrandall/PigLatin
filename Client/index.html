@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html ng-app='piglatin'>
+<html >
 	<head>
 		<meta charset="utf-8"/>
 		<title>Pig Latin Translator</title>
-		<link rel ="stylesheet" type="text/css" href="styles/style.css"
-		/>
+		<link rel ="stylesheet" type="text/css" href="styles/style.css"/>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+	<script src="app/words.js"></script>
+	<script src="app/app.js"></script>
+	<script src="app/wordsfactory.js"></script>
+
+
 	</head>
-	<body>
+	<body ng-app='piglatin'>
 	<h1>Pig Latin Translator</h1>
-		<form ng-submit="translateWord(word)" class="ng-pristine ng-valid">
-			<input type='text' ng-model='word' placeholder="Enter word to translate" class="ng-pristine ng-valid ng-empty ng-touched"/>
-			<button type="submit"> Translate </button>
+		<form ng-submit="translateWord()" ng-controller="TranslatorController">
+			<input type='text' ng-model='word' placeholder="Enter word to translate" />
+	 		<button type="submit" value="Submit"> Translate </button>
+			<p>
+			<tt>Original Word = {{word}}</tt><br/>
+			<tt>Translated Word = {{newWord}}</tt><br/>
+			</p>
 		</form>
-		<textarea ng-model="string" />
-	<script src="path/to/angular.js"></script>
-	<script src="path/to/angular-route.js"></script>
-	<script src="app/words.js"</script>
-	<script src="app/app.js"</script>
 	</body>
 </html>

@@ -1,15 +1,22 @@
 angular.module('piglatin.translator', [])
 
-
-
 .controller('TranslatorController', function($scope, Words){
-	$scope.translateWord = function() {
-		Words.translate($scope.word)
-		.then(function(){
+	// $scope.OriginalWords = [];
+	// $scope.word;
+	// $scope.newWord;
+	// $scope.TranslatedWords = [];
+	// $scope.getWord = function(word) {
+	// 	$scope.OriginalWords.push(word);
+	// }
 
-		})
-		.catch(function(error) {
-			console.error(err);
-		})
+
+	$scope.translateWord = function(){
+		$scope.newWord = Words.translate($scope.word);
+		// $scope.TranslatedWords.push($scope.newWord)
+		
+		// $scope.TranslatedWords.push(this.word)
+		
 	}
+
 });
+

@@ -5,11 +5,8 @@ angular.module('piglatin',[
 ])
 
 .config(function($routeProvider){
-	.when('/'{
+	$routeProvider.when('/', {
 		templateUrl: 'app/words.html',
 		controller: 'TranslatorController'
 	})
-})
-.run(function($rootScope){
-	
 })

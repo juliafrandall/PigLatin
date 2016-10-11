@@ -3,10 +3,10 @@ var express = require('express')
 var app = express();
 
 
-
-
-app.get('*', (request, response)=>{
-	response.sendFile(__dirname + '/client/index.html')
+app.use(express.static(__dirname + '/Client'))
+// console.log(__dirname);
+app.get('/', (request, response)=>{
+	response.sendFile(__dirname + '/Client/index.html')
 });
 
 app.listen(process.env.PORT || 8000);
